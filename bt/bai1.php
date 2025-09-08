@@ -1,11 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bai 1</title>
 </head>
+
 <body>
     <h1>Bai tap 1</h1>
     <form action="" method="post">
@@ -30,4 +31,5 @@
         ?>
     </pre>
 </body>
+
 </html>

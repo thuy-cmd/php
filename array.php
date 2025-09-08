@@ -34,6 +34,49 @@
         echo "Tong: " . $sum . "<br>";
         echo "Max: " . $max . "<br>";
         echo "Min: " . $min . "<br>";
+
+        echo "Kiem tra khoa key co trong mang array khong <br>";
+        if (array_key_exists("2", $core)) {
+            echo "Exists ". $core["2"] ."<br>";
+        }
+        else {
+            echo "Not exists". $core["2"] ."<br>";
+        }
+        
+        echo $str = implode("-->", $courses) . "<br>";
+        $txt = "LEARN PHP JAVACORE";
+        $subtxt = explode(" ", $txt);
+        for ($i = 0; $i < count($subtxt); $i++) {
+            echo $subtxt[$i] ."<br>";
+        }
+
+        foreach ($subtxt as $sub) {
+            echo $sub ."<br>";
+        }
+
+        echo "Truy xuất các phần tử của mảng <br>";
+        echo "Current: " . current($courses) . "<br>";
+        echo "Next: " . next($courses) . "<br>";
+        echo "Current: " . current($courses) . "<br>";
+        echo "Current: " . current($courses) . "<br>";
+
+        echo "So sanh khac nhau <br>";
+        $a1 = array("name" => "PHP", "time" => 120, "zend", "joomla");
+        $a2 = array("PHP", 100);
+
+        $diff = array_intersect($a1, $a2);
+
+        echo "<pre>";
+        print_r($a1);
+        echo "</pre>";
+
+        echo "<pre>";
+        print_r($a2);
+        echo "</pre>";
+
+        echo "<pre>";
+        print_r( $diff);
+        echo "</pre>";
     ?>
 </body>
 </html>
