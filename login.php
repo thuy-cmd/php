@@ -18,78 +18,81 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <style>
-         html {
-            font-size: 62.5%;
-        }
+    html {
+        font-size: 62.5%;
+    }
 
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            display: flex;
-            height: 100vh;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        form {
-            width: 500px;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #ccc;
-            box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.20),
-                        10px 10px 5px rgba(0, 0, 0, 0.20);
-        }
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .form__group {
-            display: flex;
-            flex-direction: column;
-            font-size: 1.8rem;
-        }
+    form {
+        width: 500px;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.20),
+            10px 10px 5px rgba(0, 0, 0, 0.20);
+    }
 
-        .form__group + .form__group {
-            margin-top: 20px;
-        }
+    .form__group {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.8rem;
+    }
 
-        .form__label {
-            margin-bottom: 4px;
-            display: block;
-        }
+    .form__group+.form__group {
+        margin-top: 20px;
+    }
 
-        .form__input {
-            padding: 8px 0px 8px 8px;
-            border-radius: 12px;
-            outline: none;
-            border: 1.5px solid #ccc;
-        }
+    .form__label {
+        margin-bottom: 4px;
+        display: block;
+    }
 
-        .form__submit {
-            width: 100%;
-            padding: 12px 0;
-            cursor: pointer;
-            margin-top: 20px;
-            border-radius: 12px;
-            background-color: ivory;
-            border: 1.5px solid #ccc;
-        }
+    .form__input {
+        padding: 8px 0px 8px 8px;
+        border-radius: 12px;
+        outline: none;
+        border: 1.5px solid #ccc;
+    }
 
-        .result, .error {
-            font-size: 2rem;
-            text-align: center;
-            background-color: aqua;
-            padding: 12px;
-            border-radius: 12px;
-        }
+    .form__submit {
+        width: 100%;
+        padding: 12px 0;
+        cursor: pointer;
+        margin-top: 20px;
+        border-radius: 12px;
+        background-color: ivory;
+        border: 1.5px solid #ccc;
+    }
 
-        .error {
-            color: #fff;
-            background-color: crimson;
-        }
+    .result,
+    .error {
+        font-size: 2rem;
+        text-align: center;
+        background-color: aqua;
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .error {
+        color: #fff;
+        background-color: crimson;
+    }
     </style>
 </head>
+
 <body>
     <form action="" method="post" autocomplete="off">
         <h1 class="title">Login</h1>
@@ -130,4 +133,5 @@
         ?>
     </form>
 </body>
+
 </html>
