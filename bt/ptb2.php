@@ -1,83 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giải phương trình bặc 2</title>
     <style>
-        html {
-            font-size: 62.5%;
-        }
+    html {
+        font-size: 62.5%;
+    }
 
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            display: flex;
-            height: 100vh;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        form {
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #ccc;
-            box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.20),
-                        10px 10px 5px rgba(0, 0, 0, 0.20);
-        }
+    body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .form__group {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            font-size: 1.8rem;
-        }
+    form {
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.20),
+            10px 10px 5px rgba(0, 0, 0, 0.20);
+    }
 
-        .form__group + .form__group {
-            margin-top: 20px;
-        }
+    .form__group {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: 1.8rem;
+    }
 
-        .form__input {
-            flex: 1;
-            width: 12px;
-            padding: 8px;
-            border-radius: 12px;
-            outline: none;
-            border: 1.5px solid #ccc;
-        }
+    .form__group+.form__group {
+        margin-top: 20px;
+    }
 
-        .form__submit {
-            width: 100%;
-            padding: 12px 0;
-            margin-top: 20px;
-            border-radius: 12px;
-            border: 1.5px solid #ccc;
-            background-color: ivory;
-            cursor: pointer;
-        }
+    .form__input {
+        flex: 1;
+        width: 12px;
+        padding: 8px;
+        border-radius: 12px;
+        outline: none;
+        border: 1.5px solid #ccc;
+    }
 
-        .result {
-            font-size: 2rem;
-            text-align: center;
-            background-color: aqua;
-            padding: 12px;
-            border-radius: 12px;
-        }
+    .form__submit {
+        width: 100%;
+        padding: 12px 0;
+        margin-top: 20px;
+        border-radius: 12px;
+        border: 1.5px solid #ccc;
+        background-color: ivory;
+        cursor: pointer;
+    }
+
+    .result {
+        font-size: 2rem;
+        text-align: center;
+        background-color: aqua;
+        padding: 12px;
+        border-radius: 12px;
+    }
     </style>
 </head>
+
 <body>
     <form action="" method="post">
         <h1>Giải phương trình bậc 2</h1>
         <div class="form__group">
             <label class="form__label" for="numbera">Nhập hệ số a: </label>
-            <input type="number" name="numbera" id="numbera" class="form__input" required value="<?php echo isset($_POST["numbera"]) ? $_POST["numbera"] : "" ?>">
+            <input type="number" name="numbera" id="numbera" class="form__input" required
+                value="<?php echo isset($_POST["numbera"]) ? $_POST["numbera"] : "" ?>">
         </div>
         <div class="form__group">
             <label class="form__label" for="numberb">Nhập hệ số b: </label>
-            <input type="number" name="numberb" id="numberb" class="form__input" required value="<?php echo isset($_POST["numberb"]) ? $_POST["numberb"] : "" ?>">
+            <input type="number" name="numberb" id="numberb" class="form__input" required
+                value="<?php echo isset($_POST["numberb"]) ? $_POST["numberb"] : "" ?>">
         </div>
         <div class="form__group">
             <label class="form__label" for="numberc">Nhập hệ số c: </label>
-            <input type="number" name="numberc" id="numberc" class="form__input" required value="<?php echo isset($_POST["numberc"]) ? $_POST["numberc"] : "" ?>">
+            <input type="number" name="numberc" id="numberc" class="form__input" required
+                value="<?php echo isset($_POST["numberc"]) ? $_POST["numberc"] : "" ?>">
         </div>
         <button type="submit" class="form__submit">Xem kết quả</button>
         <?php
@@ -115,4 +120,5 @@
         ?>
     </form>
 </body>
+
 </html>
