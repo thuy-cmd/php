@@ -24,11 +24,11 @@
         if (!str_contains($name, "Enter")) {
             echo "Hello $name <br>";
         } else {
-            echo $name;
+            echo $name . "<br>";
         }
 
         for ($i = 0; $i < mb_strlen($name); $i++) {
-            echo $name[$i] . "<br>";
+            echo "Ki tu $i : $name[$i] <br>";
         }
     ?>
     <script>
