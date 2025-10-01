@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 class SanPham {
     protected $TenSanPham;
     protected $DonGia;
@@ -43,31 +45,42 @@ class DienThoai extends SanPham {
     }
 }
 
-$danhSachSanPham = [];
+$danhSachSanPham = $_SESSION['danhSachSanPham'] ?? [];
+
+$loi = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $type = $_POST['type'] ?? '';
 
     if ($type === 'Sach') {
-        $ten = $_POST['TenSach'] ?? '';
+        $ten = trim($_POST['TenSach'] ?? '');
         $gia = $_POST['DonGiaSach'] ?? 0;
-        $tacgia = $_POST['TacGia'] ?? '';
+        $tacgia = trim($_POST['TacGia'] ?? '');
         $sotrang = $_POST['SoTrang'] ?? 0;
 
-        $sach = new Sach($ten, $gia, $tacgia, $sotrang);
-        $danhSachSanPham[] = $sach;
+        if (empty($ten) || empty($gia) || empty($tacgia) || empty($sotrang)) {
+            $loi[] = "Vui lòng điền đầy đủ thông tin cho sách.";
+        } else {
+            $sach = new Sach($ten, $gia, $tacgia, $sotrang);
+            $danhSachSanPham[] = $sach;
+            $_SESSION['danhSachSanPham'] = $danhSachSanPham;
+        }
     } elseif ($type === 'DienThoai') {
-        $ten = $_POST['TenDienThoai'] ?? '';
+        $ten = trim($_POST['TenDienThoai'] ?? '');
         $gia = $_POST['DonGiaDienThoai'] ?? 0;
-        $hang = $_POST['HangSX'] ?? '';
+        $hang = trim($_POST['HangSX'] ?? '');
         $baohanh = $_POST['BaoHanh'] ?? 0;
 
-        $dt = new DienThoai($ten, $gia, $hang, $baohanh);
-        $danhSachSanPham = $dt;
+        if (empty($ten) || empty($gia) || empty($hang) || empty($baohanh)) {
+            $loi[] = "Vui lòng điền đầy đủ thông tin cho điện thoại.";
+        } else {
+            $dt = new DienThoai($ten, $gia, $hang, $baohanh);
+            $danhSachSanPham[] = $dt;
+            $_SESSION['danhSachSanPham'] = $danhSachSanPham;
+        }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -87,11 +100,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         font-family: Arial;
         padding: 20px;
     }
+
+    .error {
+        color: red;
+        font-weight: bold;
+    }
+
+    .success {
+        color: green;
+    }
     </style>
 </head>
 
 <body>
     <h2>Thêm sản phẩm mới</h2>
+
+    <?php
+    if (!empty($loi)) {
+        foreach ($loi as $msg) {
+            echo "<div class='error'>⚠️ {$msg}</div>";
+        }
+    }
+    ?>
 
     <form method="post" action="">
         <label for="type">Chọn loại sản phẩm:</label>
@@ -105,18 +135,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div id="formDienThoai" class="form-section">
             <h3>Thông tin điện thoại</h3>
-            <label>Tên sản phẩm: <input type="text" name="TenDienThoai"></label><br><br>
-            <label>Đơn giá: <input type="number" name="DonGiaDienThoai"></label><br><br>
-            <label>Hãng sản xuất: <input type="text" name="HangSX"></label><br><br>
-            <label>Bảo hành (tháng): <input type="number" name="BaoHanh"></label><br><br>
+            <label>Tên sản phẩm: <input type="text" name="TenDienThoai"
+                    value="<?= $_POST['TenDienThoai'] ?? '' ?>"></label><br><br>
+            <label>Đơn giá: <input type="number" name="DonGiaDienThoai"
+                    value="<?= $_POST['DonGiaDienThoai'] ?? '' ?>"></label><br><br>
+            <label>Hãng sản xuất: <input type="text" name="HangSX"
+                    value="<?= $_POST['HangSX'] ?? '' ?>"></label><br><br>
+            <label>Bảo hành (tháng): <input type="number" name="BaoHanh"
+                    value="<?= $_POST['BaoHanh'] ?? '' ?>"></label><br><br>
         </div>
 
         <div id="formSach" class="form-section">
             <h3>Thông tin sách</h3>
-            <label>Tên sách: <input type="text" name="TenSach"></label><br><br>
-            <label>Đơn giá: <input type="number" name="DonGiaSach"></label><br><br>
-            <label>Tác giả: <input type="text" name="TacGia"></label><br><br>
-            <label>Số trang: <input type="number" name="SoTrang"></label><br><br>
+            <label>Tên sách: <input type="text" name="TenSach" value="<?= $_POST['TenSach'] ?? '' ?>"></label><br><br>
+            <label>Đơn giá: <input type="number" name="DonGiaSach"
+                    value="<?= $_POST['DonGiaSach'] ?? '' ?>"></label><br><br>
+            <label>Tác giả: <input type="text" name="TacGia" value="<?= $_POST['TacGia'] ?? '' ?>"></label><br><br>
+            <label>Số trang: <input type="number" name="SoTrang" value="<?= $_POST['SoTrang'] ?? '' ?>"></label><br><br>
         </div>
 
         <input type="submit" value="Thêm sản phẩm">
@@ -126,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <h2>Danh sách sản phẩm đã thêm:</h2>
     <?php
-    if (count($danhSachSanPham) === 0) {
+    if (empty($danhSachSanPham)) {
         echo "<i>Chưa có sản phẩm nào được thêm.</i>";
     } else {
         foreach ($danhSachSanPham as $sp) {

@@ -73,7 +73,7 @@ class DonHangOnline extends DonHang implements ThanhToan {
 
 <head>
     <meta charset="UTF-8">
-    <title>Đơn hàng tạm thời (không session)</title>
+    <title>Đơn hàng</title>
     <style>
     body {
         font-family: Arial;
