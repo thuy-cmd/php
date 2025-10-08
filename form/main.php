@@ -75,7 +75,7 @@
                                             <div class="card-header">GET</div>
                                             <div class="card-body">
                                                 <p>Gửi dữ liệu qua URL</p>
-                                                <code>example.com?user=eric</code>
+                                                <code>example.com?user=thuykieu</code>
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@
                                             <div class="card-header">POST</div>
                                             <div class="card-body">
                                                 <p>Gửi dữ liệu trong body</p>
-                                                <code>{ username: "eric" }</code>
+                                                <code>{ username: "thuykieu" }</code>
                                             </div>
                                         </div>
                                     </div>
