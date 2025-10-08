@@ -1,7 +1,10 @@
 <?php
     session_start();
-    if (isset($_SESSION["username"])) {
+    if (isset($_SESSION["username"]) && isset($_SESSION["password"]) && isset($_SESSION["email"])) {
         $username = $_SESSION["username"];
+        $password = $_SESSION["password"];
+        $email = $_SESSION["email"];
+
     } else {
         echo "No user is logged in.";
     }
@@ -17,7 +20,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">MyApp</a>
@@ -31,10 +34,7 @@
                             <a class="nav-link active" href="home.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="test-get.php">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="test-post.php">Register</a>
+                            <a class="nav-link" href="login.php">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -45,8 +45,15 @@
         <div class="jumbotron">
             <h1 class="display-4">Welcome to MyApp!</h1>
             <?php
-                if (isset($username)) {
-                    echo "<p class='lead'>Hello, <strong>$username</strong>! You are logged in.</p>";
+                if (isset($username) && isset($password)) {
+                    echo "<div>";
+                    echo "<h1>Hello, welcome back!</h1>";
+                    echo "<p class='lead'>You are logged in.</p>";
+                    echo "<p>Your information is.";
+                    echo "<p>Usename: <strong>$username</strong></p>";
+                    echo "<p>Email: <strong>$email</strong></p>";
+                    echo "<p>Password: <strong>$password</strong></p>";
+                    echo "</div>";
                 } else {
                     echo "<p class='lead'>Hello, Guest! Please log in or register.</p>";
                 }
