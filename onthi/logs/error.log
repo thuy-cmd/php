@@ -1,0 +1,1 @@
+2025-11-06T15:07:26+00:00 Query cities failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'city_id' in 'field list'
