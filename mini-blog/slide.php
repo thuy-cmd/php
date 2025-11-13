@@ -137,9 +137,6 @@
                 <div class="mark">MB</div>
                 <div>
                     <h1 class="title">Mini Blog (PHP + MySQL)</h1>
-                    <div class="muted">3 file: <strong>index.php</strong>, <strong>functions.php</strong>,
-                        <strong>slide.php</strong>
-                    </div>
                 </div>
             </div>
             <a href="index.php">← Quay lại ứng dụng</a>
@@ -226,7 +223,6 @@
             <ul class="muted">
                 <li>Gradient hồng-tím, bo góc lớn</li>
                 <li>Thẻ (tag) đáng yêu, emoji cảm xúc</li>
-                <li>Focus bằng phím <code>/</code> để tìm nhanh</li>
             </ul>
         </section>
 
