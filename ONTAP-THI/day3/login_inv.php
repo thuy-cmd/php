@@ -1,0 +1,63 @@
+<?php
+// login_inv.php
+session_start();
+require 'db.php';
+$conn = connectDB();
+$errors = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username'] ?? '');
+    $password = trim($_POST['password'] ?? '');
+
+    if ($username === '' || $password === '') {
+        $errors[] = "Vui lòng nhập đầy đủ thông tin.";
+    } else {
+        $stmt = $conn->prepare("SELECT manv, username, password FROM nhanvien WHERE username = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch();
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['manv'] = $user['manv'];
+            header("Location: inventory.php");
+            exit;
+        } else {
+            $errors[] = "Thông tin đăng nhập không đúng.";
+        }
+    }
+}
+
+function e($s){ return htmlspecialchars($s, ENT_QUOTES, 'UTF-8'); }
+?>
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Login — Inventory</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container" style="max-width:480px;margin:40px auto">
+        <div class="card">
+            <h2 style="margin:0 0 10px">Đăng nhập — Inventory</h2>
+            <?php if($errors): ?>
+            <div style="color:#ef4444;margin-bottom:10px">
+                <?php foreach($errors as $err) echo '<div>'.e($err).'</div>'; ?>
+            </div>
+            <?php endif; ?>
+            <form method="post" novalidate>
+                <div class="form__group"><label>Username</label><input name="username" type="text" required></div>
+                <div class="form__group"><label>Password</label><input name="password" type="password" required></div>
+                <div style="display:flex;gap:8px;justify-content:flex-end">
+                    <a href="register_inv.php" class="btn ghost"
+                        style="text-decoration:none;padding:8px 12px">Register</a>
+                    <button type="submit" class="btn primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

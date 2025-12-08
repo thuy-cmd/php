@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS nhanvien (
+	manv INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(25) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+)
+
+CREATE TABLE IF NOT EXISTS nhiemvu (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    manv INT NOT NULL,
+    task_title VARCHAR(255) NOT NULL,
+    task_desc VARCHAR(255) NOT NULL,
+	create_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_nhiemvu_nhanvien
+		FOREIGN KEY (manv)
+        REFERENCES nhanvien(manv)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+)
